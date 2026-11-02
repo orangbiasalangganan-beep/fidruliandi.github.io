@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galeri Karya — Fidruliandi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400&display=swap">
+<style>
+:root{--paper:#FAF9F5;--ink:#1C1C22;--muted:#55555F;--line:#D9D7CF;--card:#fff;--c:#00A3D9;--m:#E6007E;--y:#FFD60A;
+--head:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;--body:'Source Serif 4',Georgia,serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#16161B;--ink:#F3F1EA;--muted:#A9A9B3;--line:#33333C;--card:#1E1E25}}
+:root[data-theme="dark"]{--paper:#16161B;--ink:#F3F1EA;--muted:#A9A9B3;--line:#33333C;--card:#1E1E25}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.6;text-align:center}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+:focus-visible{outline:3px solid var(--m);outline-offset:3px}
+.back{display:inline-block;margin-top:1.25rem;font-family:var(--head);font-weight:500;color:inherit;text-underline-offset:4px;text-decoration-color:var(--m)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(2.2rem,8vw,4.5rem);line-height:1;letter-spacing:-.03em;margin:2rem 0 .75rem;text-shadow:.045em .03em 0 var(--c),-.035em -.025em 0 var(--m)}
+.sub{max-width:34rem;margin:0 auto 2rem;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem}
+.filters button{font:500 .95rem var(--head);padding:.55rem 1.1rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:2rem;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{columns:1;column-gap:1rem}
+@media(min-width:36rem){.grid{columns:2}}
+@media(min-width:62rem){.grid{columns:3}}
+.item{break-inside:avoid;margin:0 0 1rem;display:block;width:100%;padding:0;border:1px solid var(--line);background:var(--card);border-radius:.3rem;overflow:hidden;cursor:zoom-in;color:inherit;text-align:center;font:inherit}
+.item img{display:block;width:100%;height:auto}
+.item span{display:block;padding:.7rem .8rem;font-family:var(--head);font-weight:500;font-size:.95rem}
+.item:hover{border-color:var(--m)}
+footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.95rem}
+dialog{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
+dialog::backdrop{background:rgba(10,10,14,.92)}
+dialog[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3.5rem .75rem 1rem}
+dialog figure{margin:0;max-width:100%}
+dialog img{max-width:100%;max-height:76vh;object-fit:contain;background:#fff;border-radius:.25rem}
+dialog figcaption{margin-top:.8rem;font-family:var(--head)}
+dialog figcaption small{display:block;font-family:var(--body);opacity:.75;margin-top:.15rem}
+.ctl{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:50%;width:2.8rem;height:2.8rem;font-size:1.5rem;cursor:pointer}
+.ctl:hover{background:var(--m)}
+.x{top:calc(.75rem + env(safe-area-inset-top,0px));right:.75rem}
+.pv{left:.5rem;top:50%}.nx{right:.5rem;top:50%}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">Kembali ke profil</a>
+  <h1>Galeri karya</h1>
+  <p class="sub">Contoh desain dari proyek printing dan promosi. Ketuk gambar untuk memperbesar.</p>
+  <div class="filters" id="filters" role="group" aria-label="Filter kategori"></div>
+  <div class="grid" id="grid"></div>
+  <footer>© 2026 Fidruliandi</footer>
+</div>
+<dialog id="lb" aria-label="Tampilan gambar besar">
+  <button class="ctl x" id="cl" aria-label="Tutup">×</button>
+  <button class="ctl pv" id="pv" aria-label="Gambar sebelumnya">‹</button>
+  <figure><img id="lbi" alt=""><figcaption id="lbc"></figcaption></figure>
+  <button class="ctl nx" id="nx" aria-label="Gambar berikutnya">›</button>
+</dialog>
+<script>
+const ITEMS=[{"src": "images/jersey-sobat-ngarit.jpg", "t": "Jersey Sobat Ngarit", "cat": "Jersey", "d": "Pola jersey dengan ilustrasi petani di sawah."}, {"src": "images/jersey-penantang-ombak.jpg", "t": "Jersey Penantang Ombak", "cat": "Jersey", "d": "Ilustrasi nelayan dan laut pada pola jersey."}, {"src": "images/jersey-pelaut-nusantara.jpg", "t": "Jersey Pelaut Nusantara", "cat": "Jersey", "d": "Pola jersey bertema nelayan saat matahari terbit."}, {"src": "images/jersey-strayzone-80.jpg", "t": "Jersey Strayzone 80", "cat": "Jersey", "d": "Jersey hitam putih dengan nama dan nomor punggung."}, {"src": "images/kemasan-kopi-mimik.jpg", "t": "Kemasan Kopi Mimik", "cat": "Kemasan & cetak", "d": "Tiga alternatif desain kemasan kopi tradisional."}, {"src": "images/menu-resto-cafe.jpg", "t": "Menu resto dan café", "cat": "Kemasan & cetak", "d": "Tata letak menu cetak dengan foto dan daftar harga."}, {"src": "images/kemasan-cioccolata.jpg", "t": "Kemasan cokelat Cioccolata", "cat": "Kemasan & cetak", "d": "Dieline kemasan varian milk dan dark."}, {"src": "images/pola-busana-ungu-navy.jpg", "t": "Pola busana ungu dan navy", "cat": "Busana & motif", "d": "Layout motif untuk potongan gamis siap cetak."}, {"src": "images/pola-busana-navy-ombre.jpg", "t": "Pola busana navy ombre", "cat": "Busana & motif", "d": "Motif floral dengan gradasi warna, dua varian warna."}, {"src": "images/pola-busana-hitam-merah.jpg", "t": "Pola busana hitam dan merah", "cat": "Busana & motif", "d": "Motif bordir dan floral pada potongan busana."}, {"src": "images/pola-busana-krem-floral.jpg", "t": "Pola busana krem floral", "cat": "Busana & motif", "d": "Motif sulur dan kisi pada potongan busana."}, {"src": "images/motif-seamless-enam-warna.jpg", "t": "Motif seamless enam warna", "cat": "Busana & motif", "d": "Satu motif berulang dalam enam pilihan warna."}];
+const CATS=['Semua','Jersey','Kemasan & cetak','Busana & motif'];
+const grid=document.getElementById('grid'),fil=document.getElementById('filters'),lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc');
+let cat='Semua',vis=[],cur=0,opener=null;
+function render(){
+  vis=ITEMS.filter(i=>cat==='Semua'||i.cat===cat);
+  grid.innerHTML='';
+  vis.forEach((it,n)=>{
+    const b=document.createElement('button');b.className='item';b.type='button';
+    b.setAttribute('aria-label','Perbesar: '+it.t);
+    b.innerHTML='<img loading="lazy" decoding="async" alt=""><span></span>';
+    b.firstChild.src=it.src;b.firstChild.alt=it.t;b.lastChild.textContent=it.t;
+    b.onclick=()=>{opener=b;show(n);lb.showModal()};
+    grid.appendChild(b);
+  });
+}
+function show(n){cur=(n+vis.length)%vis.length;const it=vis[cur];lbi.src=it.src;lbi.alt=it.t;lbc.innerHTML='';
+  const s=document.createElement('strong');s.textContent=it.t;const d=document.createElement('small');d.textContent=it.d;lbc.append(s,d)}
+CATS.forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.setAttribute('aria-pressed',c===cat);
+  b.onclick=()=>{cat=c;[...fil.children].forEach(x=>x.setAttribute('aria-pressed',x===b));render()};fil.appendChild(b)});
+document.getElementById('cl').onclick=()=>lb.close();
+document.getElementById('pv').onclick=()=>show(cur-1);
+document.getElementById('nx').onclick=()=>show(cur+1);
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+lb.addEventListener('close',()=>{if(opener)opener.focus()});
+document.addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+render();
+</script>
+</body>
+</html>
