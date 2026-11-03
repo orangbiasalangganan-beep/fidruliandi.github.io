@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fidruliandi – Desainer Grafis</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f7fb;--ink:#14143a;--navy:#0a0a5c;--muted:#55557a;--card:#fff;--line:#d9d9ea;--coral:#ef6f4f;--gold:#e8bd3c;--cyan:#00a8d8;--mag:#e0357f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d24;--ink:#ececf8;--navy:#1c1c8a;--muted:#a3a3c8;--card:#16163a;--line:#2c2c5a}}
+:root[data-theme="dark"]{--bg:#0d0d24;--ink:#ececf8;--navy:#1c1c8a;--muted:#a3a3c8;--card:#16163a;--line:#2c2c5a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Figtree,system-ui,sans-serif;text-align:center;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:30}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;margin:0;line-height:.95}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy);display:flex;justify-content:center;gap:8px;padding:10px}
+nav a{color:#fff;text-decoration:none;padding:8px 20px;border-radius:30px;font-weight:600;transition:background .3s,transform .3s}
+nav a:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+nav a.on{background:var(--coral)}
+.view{display:none}.view.on{display:block}
+.hero{background:var(--navy);color:#fff;padding:56px 0 72px;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.45;animation:float 9s ease-in-out infinite}
+.b1{width:260px;height:260px;background:var(--cyan);left:-60px;top:-40px}
+.b2{width:240px;height:240px;background:var(--mag);right:-60px;top:80px;animation-delay:-3s}
+.b3{width:220px;height:220px;background:var(--gold);left:35%;bottom:-120px;animation-delay:-6s}
+@keyframes float{50%{transform:translate(30px,-30px) scale(1.15)}}
+.hero .wrap{position:relative}
+.ring{width:218px;height:218px;margin:0 auto 22px;border-radius:50%;padding:6px;background:conic-gradient(var(--cyan),var(--mag),var(--gold),var(--coral),var(--cyan));animation:spin 8s linear infinite,pop 1s cubic-bezier(.2,1.4,.4,1) both}
+.ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:5px solid var(--navy);display:block;animation:spin 8s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{from{transform:scale(0);opacity:0}}
+.hero h1{font-size:clamp(58px,15vw,120px);letter-spacing:.02em}
+.hero h1 span{display:inline-block;animation:rise .7s cubic-bezier(.2,1.2,.4,1) both}
+@keyframes rise{from{transform:translateY(60px) rotate(8deg);opacity:0}}
+.role{font-family:'Bebas Neue',Impact,sans-serif;font-size:30px;letter-spacing:.05em;color:var(--gold);min-height:36px}
+.role::after{content:"|";animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p{max-width:46ch;margin:12px auto 24px;color:#dcdcf5;animation:fade 1s .9s both}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}}
+.btn{display:inline-block;padding:12px 24px;border-radius:30px;background:var(--coral);color:#fff;text-decoration:none;font-weight:600;margin:0 4px 8px;transition:transform .3s,box-shadow .3s;animation:fade 1s 1.1s both}
+.btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 10px 24px rgba(239,111,79,.45)}
+.btn.alt{background:transparent;border:2px solid #fff}
+.cmyk{display:flex;height:8px;overflow:hidden}.cmyk i{flex:1;transform-origin:left;animation:grow 1.2s .3s both}
+@keyframes grow{from{transform:scaleX(0)}}
+.marquee{overflow:hidden;background:var(--card);border-bottom:1px solid var(--line);padding:12px 0}
+.marquee div{display:flex;gap:48px;width:max-content;animation:slide 22s linear infinite;font-family:'Bebas Neue',Impact,sans-serif;font-size:26px;color:var(--navy)}
+@media (prefers-color-scheme:dark){.marquee div{color:var(--gold)}}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:56px 0 8px}
+h2{font-size:clamp(40px,8vw,60px);margin-bottom:26px}
+h2::after{content:"";display:block;height:4px;width:70px;margin:12px auto 0;background:linear-gradient(90deg,var(--cyan),var(--mag),var(--gold));border-radius:2px;transition:width .8s .2s}
+.rv{opacity:0;transform:translateY(40px) scale(.97);transition:opacity .8s,transform .8s cubic-bezier(.2,.9,.3,1)}
+.rv.in{opacity:1;transform:none}
+section h2.rv:not(.in)::after{width:0}
+section h2.rv.in::after{width:140px}
+.letter{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--coral);border-radius:12px;padding:28px 24px;max-width:72ch;margin:0 auto;text-align:center;transition:transform .4s,box-shadow .4s}
+.letter:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,10,92,.15)}
+.letter p{margin:0 0 16px}.letter p:last-child{margin:0}
+.job{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;max-width:640px;margin:0 auto;transition:transform .4s}
+.job:hover{transform:scale(1.02)}
+.job b.t{display:block;font-size:22px;color:var(--navy)}
+@media (prefers-color-scheme:dark){.job b.t{color:var(--gold)}}
+.when{display:inline-block;background:var(--navy);color:#fff;font-size:14px;padding:3px 12px;border-radius:30px;margin:8px 0 14px}
+.job ul{list-style:none;margin:0;padding:0}.job li{margin-bottom:10px}
+.skills{display:grid;gap:18px;max-width:560px;margin:0 auto}
+.skill div:first-child{display:flex;justify-content:space-between;font-weight:600;margin-bottom:6px}
+.bar{height:14px;border-radius:7px;background:var(--line);overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--gold));border-radius:7px;transition:width 1.4s cubic-bezier(.2,.9,.3,1) .3s}
+.in .bar span{width:var(--w)}
+.about{max-width:60ch;margin:0 auto}
+dl{margin:22px auto 0;display:inline-grid;grid-template-columns:auto auto;gap:8px 18px;text-align:left}
+dt{color:var(--muted)}dd{margin:0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:28px}
+.tile{border-radius:14px;padding:38px 16px;color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-size:34px;letter-spacing:.03em;position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
+.tile small{display:block;font-family:Figtree,sans-serif;font-size:14px;opacity:.9;letter-spacing:0;margin-top:6px}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s}
+.tile:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:0 18px 36px rgba(0,0,0,.25)}
+.tile:hover::after{transform:translateX(120%)}
+.t1{background:linear-gradient(135deg,#0a0a5c,#00a8d8)}.t2{background:linear-gradient(135deg,#e0357f,#ef6f4f)}.t3{background:linear-gradient(135deg,#e8bd3c,#ef6f4f)}
+.t4{background:linear-gradient(135deg,#00a8d8,#5b3fd0)}.t5{background:linear-gradient(135deg,#5b3fd0,#e0357f)}.t6{background:linear-gradient(135deg,#14143a,#ef6f4f)}
+.note{max-width:56ch;margin:0 auto 22px;color:var(--muted)}
+.pulse{animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,111,79,.6)}70%{box-shadow:0 0 0 18px rgba(239,111,79,0)}100%{box-shadow:0 0 0 0 rgba(239,111,79,0)}}
+.cta{display:inline-block;padding:16px 34px;border-radius:40px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:18px;transition:transform .3s}
+.cta:hover{transform:scale(1.06)}
+footer{margin-top:64px;background:var(--navy);color:#fff;padding:40px 0}
+footer a{color:#fff}footer .role{margin-bottom:6px}footer .role::after{content:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar span{width:var(--w)}}
+.gallery{columns:3 240px;column-gap:16px;margin-bottom:32px}
+.g{break-inside:avoid;margin:0 0 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:zoom-in;transition:transform .4s,box-shadow .4s}
+.g:hover{transform:translateY(-6px) rotate(-.8deg);box-shadow:0 16px 34px rgba(10,10,92,.25)}
+.g img{width:100%;display:block;transition:transform .6s}.g:hover img{transform:scale(1.06)}
+.g{overflow:hidden}.g figcaption{padding:10px 12px;font-size:14px;color:var(--muted)}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(5,5,30,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px;cursor:zoom-out}
+#lb.on{display:flex;animation:fade .3s both}#lb img{max-width:100%;max-height:82vh;border-radius:8px;animation:pop .4s both}
+#lb p{color:#fff;margin:12px 0 0}
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:62px;height:62px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.35);animation:pop .8s 1.5s cubic-bezier(.2,1.4,.4,1) both,wa 2.4s 2.4s infinite,bob 3s 2.4s ease-in-out infinite;transition:transform .3s}
+.wa:hover{transform:scale(1.12)}
+.wa svg{width:34px;height:34px;fill:#fff}
+@keyframes wa{0%{box-shadow:0 8px 22px rgba(0,0,0,.35),0 0 0 0 rgba(37,211,102,.7)}70%{box-shadow:0 8px 22px rgba(0,0,0,.35),0 0 0 20px rgba(37,211,102,0)}100%{box-shadow:0 8px 22px rgba(0,0,0,.35),0 0 0 0 rgba(37,211,102,0)}}
+@keyframes bob{50%{translate:0 -8px}}
+</style>
+</head>
+<body>
+<nav aria-label="Menu utama"><a href="#beranda" data-v="beranda">Beranda</a><a href="#karya" data-v="karya">Contoh karya</a></nav>
+
+<div class="view" id="v-beranda">
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="wrap">
+    <div class="ring"><img alt="Foto Fidruliandi" src="assets/foto.jpg"></div>
+    <div class="role" id="typed"></div>
+    <h1 id="name">Fidruliandi</h1>
+    <p>Lebih dari 5 tahun membuat materi promosi, ilustrasi, dan desain siap cetak.</p>
+    <a class="btn" href="#kontak">Hubungi saya</a><a class="btn alt" href="#karya">Lihat contoh karya</a>
+  </div>
+</header>
+<div class="cmyk" aria-hidden="true"><i style="background:#00a8d8"></i><i style="background:#e0357f"></i><i style="background:#f5d800"></i><i style="background:#111"></i></div>
+<div class="marquee" aria-hidden="true"><div><span>CorelDRAW</span><span>Photoshop</span><span>Illustrator</span><span>SketchUp</span><span>Logo</span><span>Poster</span><span>Infografis</span><span>CorelDRAW</span><span>Photoshop</span><span>Illustrator</span><span>SketchUp</span><span>Logo</span><span>Poster</span><span>Infografis</span></div></div>
+
+<main class="wrap">
+<section id="perkenalan">
+  <h2 class="rv">Perkenalan</h2>
+  <div class="letter rv">
+    <p>Perkenalkan saya, Fidruliandi dengan ini mengajukan lamaran untuk posisi Desainer Grafis seperti diiklankan di website. Dengan latar belakang saya dalam seni dan desain, serta kecintaan saya pada dunia Promosi dan Printing, saya yakin dapat membawa kontribusi yang berharga pada tim kreatif Anda. Sebagai seorang desainer grafis dengan lebih dari 5 tahun pengalaman, saya telah bekerja pada proyek-proyek yang melibatkan desain grafis untuk promosi.</p>
+    <p>Pemahaman saya tentang elemen visual dan storytelling telah memungkinkan saya untuk menciptakan materi pemasaran, ilustrasi, dan antarmuka pengguna yang mendukung visi kreatif didalam perusahaan. Saya sangat terinspirasi oleh kreativitas dan inovasi yang diterapkan dalam karya-karya yang telah dihasilkan. Saya sangat antusias untuk menjadi bagian dari tim yang membentuk masa depan dunia printing dengan kontribusi desain grafis saya.</p>
+    <p>Saya bersedia untuk berdiskusi lebih lanjut tentang bagaimana latar belakang dan keterampilan saya dapat memperkuat proyek-proyek kreatif kelak didalam Perusahaan. Saya yakin bahwa semangat saya untuk seni dan desain, bersama dengan pengalaman praktis saya, akan menjadi aset berharga untuk tim Anda.</p>
+    <p>Terima kasih atas perhatian Anda. Saya berharap dapat memiliki kesempatan untuk berbicara lebih lanjut tentang bagaimana saya dapat berkontribusi pada proyek-proyek menarik.</p>
+    <p><b>Hormat saya,<br>Fidruliandi</b></p>
+  </div>
+</section>
+
+<section id="pengalaman">
+  <h2 class="rv">Pengalaman kerja</h2>
+  <div class="job rv">
+    <b class="t">Printlab Indonesia – Jakarta Timur</b>
+    <span class="when">2023 – sekarang · Desain sekaligus Desktop</span>
+    <ul>
+      <li><b>Melayani customer langsung.</b> Mengembangkan ide dari customer menjadi karya atau produk yang diinginkan.</li>
+      <li><b>Kontrol hasil cetak.</b> Mengikuti proses cetak dari layout sampai divisi QC.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="keahlian">
+  <h2 class="rv">Penguasaan aplikasi</h2>
+  <div class="skills rv">
+    <div class="skill"><div><span>CorelDRAW</span><span>93%</span></div><div class="bar"><span style="--w:93%"></span></div></div>
+    <div class="skill"><div><span>Adobe Photoshop</span><span>90%</span></div><div class="bar"><span style="--w:90%"></span></div></div>
+    <div class="skill"><div><span>Adobe Illustrator</span><span>80%</span></div><div class="bar"><span style="--w:80%"></span></div></div>
+    <div class="skill"><div><span>SketchUp</span><span>70%</span></div><div class="bar"><span style="--w:70%"></span></div></div>
+    <div class="skill"><div><span>Microsoft Office</span><span>70%</span></div><div class="bar"><span style="--w:70%"></span></div></div>
+  </div>
+</section>
+
+<section id="tentang">
+  <h2 class="rv">Tentang saya</h2>
+  <div class="about rv">
+    <p>Desainer grafis yang menciptakan visual menarik, komunikatif, dan tepat sasaran. Berpengalaman membuat logo, poster, infografis, konten media sosial, serta tata letak publikasi.</p>
+    <p>Terampil memakai berbagai software desain seperti Adobe Illustrator, Photoshop, dan lainnya.</p>
+    <dl><dt>Alamat</dt><dd>Kp. dan Ds. Jayanti RT 003/001, Kec. Jayanti, Kab. Tangerang, Banten 15610</dd><dt>Jenis kelamin</dt><dd>Laki-laki</dd><dt>Agama</dt><dd>Islam</dd></dl>
+  </div>
+</section>
+</main>
+</div>
+
+<div class="view" id="v-karya">
+<main class="wrap">
+<section>
+  <h2 class="rv">Contoh karya</h2>
+  <p class="note rv">Pilihan karya Fidruliandi: jersey, kaos, kemasan, menu, banner, dan desain siap cetak. Ketuk gambar untuk memperbesar.</p>
+  <div class="gallery">
+<figure class="g rv"><img loading="lazy" alt="Desain produk marketplace: pengganjal ban" src="assets/karya/karya-01.jpg"><figcaption>Desain produk marketplace: pengganjal ban</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Banner promo Shopee 10.10" src="assets/karya/karya-02.jpg"><figcaption>Banner promo Shopee 10.10</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Mockup angpao Ikatan Alumni Wahidin" src="assets/karya/karya-03.jpg"><figcaption>Mockup angpao Ikatan Alumni Wahidin</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Kemasan Kopi Mimik, 3 alternatif" src="assets/karya/karya-04.jpg"><figcaption>Kemasan Kopi Mimik, 3 alternatif</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Desain menu resto &amp; café" src="assets/karya/karya-05.jpg"><figcaption>Desain menu resto &amp; café</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Desain kaos: penerang jalan" src="assets/karya/karya-06.jpg"><figcaption>Desain kaos: penerang jalan</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Desain kaos: sing mayungi" src="assets/karya/karya-07.jpg"><figcaption>Desain kaos: sing mayungi</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Jersey SMPN 2 Sukasari + mockup" src="assets/karya/karya-08.jpg"><figcaption>Jersey SMPN 2 Sukasari + mockup</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Jersey Pengauban + mockup" src="assets/karya/karya-09.jpg"><figcaption>Jersey Pengauban + mockup</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Jersey motif tradisional East Sepik" src="assets/karya/karya-10.jpg"><figcaption>Jersey motif tradisional East Sepik</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Jersey full print East Sepik Prince" src="assets/karya/karya-11.jpg"><figcaption>Jersey full print East Sepik Prince</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Jersey lengan panjang Indonesia 1945" src="assets/karya/karya-12.jpg"><figcaption>Jersey lengan panjang Indonesia 1945</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Set jersey sepak bola" src="assets/karya/karya-13.jpg"><figcaption>Set jersey sepak bola</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Jersey bergaris nomor 97" src="assets/karya/karya-14.jpg"><figcaption>Jersey bergaris nomor 97</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Template pola jersey klub" src="assets/karya/karya-15.jpg"><figcaption>Template pola jersey klub</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Pola gamis hitam merah siap cetak" src="assets/karya/karya-16.jpg"><figcaption>Pola gamis hitam merah siap cetak</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Pola gamis motif klasik" src="assets/karya/karya-17.jpg"><figcaption>Pola gamis motif klasik</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Ilustrasi kaos mobil (CorelDRAW)" src="assets/karya/karya-18.jpg"><figcaption>Ilustrasi kaos mobil (CorelDRAW)</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Ilustrasi kaos motor (CorelDRAW)" src="assets/karya/karya-19.jpg"><figcaption>Ilustrasi kaos motor (CorelDRAW)</figcaption></figure>
+<figure class="g rv"><img loading="lazy" alt="Desain sticker &amp; logo racing" src="assets/karya/karya-20.jpg"><figcaption>Desain sticker &amp; logo racing</figcaption></figure>
+</div>
+<div class="rv"><a class="cta pulse" href="https://drive.google.com/drive/folders/1EjXumBpSd9xwt5OoZv7JUbaxzw2wYVLa" target="_blank" rel="noopener">Buka folder “SAMPLE CAMPUR”</a></div>
+</section>
+</main>
+</div>
+
+<a class="wa" href="https://wa.me/62881012748385?text=Halo%20Fidruliandi%2C%20saya%20melihat%20portofolio%20Anda." target="_blank" rel="noopener" aria-label="Chat WhatsApp Fidruliandi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<div id="lb" role="dialog" aria-label="Pratinjau karya"><img alt=""><p></p></div>
+<footer id="kontak">
+  <div class="wrap">
+    <div class="role">Mari bekerja sama</div>
+    <div>Fidruliandi · Desain Grafis</div>
+    <div>WhatsApp/Telepon: <a href="https://wa.me/62881012748385" target="_blank" rel="noopener">0881 0127 48385</a><br>Web: <a href="https://orangbiasalangganan-beep.github.io/fidruliandi.github.io/index.html" target="_blank" rel="noopener">www.fidrulliandidesain.co.org</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+var n=document.getElementById('name'),t=n.textContent;n.textContent='';n.setAttribute('aria-label',t);
+t.split('').forEach(function(c,i){var s=document.createElement('span');s.textContent=c;s.style.animationDelay=(.2+i*.07)+'s';s.setAttribute('aria-hidden','true');n.appendChild(s)});
+var words=['Desainer Grafis','Promosi & Printing','Logo & Poster','Ilustrasi'],wi=0,ci=0,del=false,el=document.getElementById('typed');
+(function tick(){var w=words[wi];ci+=del?-1:1;el.textContent=w.slice(0,ci);var d=del?45:90;
+if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=300}setTimeout(tick,d)})();
+var io=null;
+try{io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15})}catch(e){}
+function show(){
+var h=(location.hash||'').slice(1),v=h==='karya'?'karya':'beranda';
+document.querySelectorAll('.view').forEach(function(x){x.classList.toggle('on',x.id==='v-'+v)});
+document.querySelectorAll('nav a').forEach(function(a){a.classList.toggle('on',a.dataset.v===v)});
+document.querySelectorAll('#v-'+v+' .rv').forEach(function(r){if(io){r.classList.remove('in');io.observe(r)}else r.classList.add('in')});
+if(h==='karya'||h==='beranda'||!h)window.scrollTo(0,0);
+else{var s=document.getElementById(h);if(s)s.scrollIntoView()}
+}
+var lb=document.getElementById('lb');
+document.addEventListener('click',function(e){var g=e.target.closest&&e.target.closest('.g');
+if(g){var i=g.querySelector('img');lb.querySelector('img').src=i.src;lb.querySelector('img').alt=i.alt;lb.querySelector('p').textContent=i.alt;lb.classList.add('on')}
+else if(lb.classList.contains('on'))lb.classList.remove('on')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
+window.addEventListener('hashchange',show);show();
+})();
+</script>
+</body>
+</html>
